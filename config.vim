@@ -91,7 +91,9 @@ let g:onedark_termcolors=256
 colorscheme evening
 
 " 绑定 %% 为EX模式下输入工作路径
-cnoremap <expr> %% getcmdtype() == ':' ? expand('%:h').'/' : '%%'
+cnoremap <expr> %^ getcmdtype() == ':' ? expand('%:p') : '%^'
+cnoremap <expr> %% getcmdtype() == ':' ? expand('%:t') : '%%'
+
 set nocompatible
 set helplang=cn
 
@@ -108,12 +110,12 @@ let g:mkdp_preivew_options = {
     \ 'sync_croll_type' : 'middle',
     \ 'hide_yaml_meta' : 1
     \ }
-let g:mkdp_markdown_css = 'C:\\User\\shi\\markdown.css'
-let g:mkdp_highligh_css = ''
+let g:mkdp_markdown_css = 'D:/md_css/typora-scrolls-0.5/typora-cobalt-theme-1.4.css'
+let g:mkdp_highligh_css = 'D:/md_css/highlight/src/languages/python.js'
 let g:mkdp_port = ''
 let g:mkdp_page_title = ' [$(name)]'
 
-let g:mkdp_path_to_chrome = "C:\\Program Files\\Google\\Chrome\\Application\\chrome.exe"
+let g:mkdp_path_to_chrome = "C:\\ProgramFiles\\Google\\Chrome\\Application\\chrome.exe"
 " 设置 chrome 浏览器的路径（或是启动 chrome（或其他现代浏览器）的命令）
 " 如果设置了该参数, g:mkdp_browserfunc 将被忽略
 
@@ -144,7 +146,53 @@ let g:mkdp_open_to_the_world = 0
 " 设置为 1, 在使用的网络中的其他计算机也能访问预览页面
 " 默认只监听本地（127.0.0.1），其他计算机不能访问
 
+" Markdown 映射
 
+" ======= 标题
+imap 2# ##  
+imap 3# ### 
+imap 4# #### 
+imap 5# ##### 
+imap 6# ###### 
+
+" ======= 字型
+imap 1x **<ESC>i
+imap 2x ****<ESC>hi
+imap 3x ******<ESC>hhi
+imap 3` ```<CR><ESC>kA
+imap ~~ ~~<ESC>i
+imap 2> >>
+imap 3> >>>
+
+" ======= 标签
+imap [url []()<ESC>%a
+imap [img ![alt ]()<ESC>%a
+imap 3- ---<CR>
+imap <u <u></u><ESC>F<i
+imap <sub <sub></sub><ESC>F<i
+imap <sup <sup></sup><ESC>F<i
+imap <b <b></b><ESC>F<i
+imap <i <i></i><ESC>F<i
+imap br <br> 
+imap <kbd <kbd></kbd><ESC>F<i
+imap <em <em></em><ESC><F<i
+
+" ========== 表格
+imap table2   \|   \|   \|<CR>\|---\|---\|<CR>\|   \|   \|
+
+" ========== 数学公式
+imap dd $$<CR><CR>$$<ESC>ki
+
+" ==========  插入空格
+imap kgm5 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+
+" ========== 脚注
+imap ^^ [^]<ESC>i
+
+
+"autocmd Filetype md
+    "let number = 2
+    " imap 
 
 " Call figlet
 " map tx :\\w !figlet
@@ -299,5 +347,8 @@ let g:ycm_semantic_triggers =  {
            \ }
 
 " 恢复c-a 功能
-unmap <C-a>
+" unmap <C-a>
 
+" 语法高亮
+let g:python_highlight_all = 1  "python"
+let g:javascript_plugin_jsdoc = 1 "js"

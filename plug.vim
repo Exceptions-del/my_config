@@ -26,7 +26,9 @@ Plug 'https://github.com/ryanoasis/vim-devicons.git'
 Plug 'https://github.com/Shougo/echodoc.vim.git'
 Plug 'https://github.com/junegunn/vim-plug.git'
 Plug 'https://github.com/tpope/vim-repeat.git'
+Plug 'https://github.com/vim-python/python-syntax.git'
+Plug 'https://github.com/pangloss/vim-javascript.git'
+Plug 'https://github.com/alvan/vim-closetag.git'
 
 " "初始化插件系统
 call plug#end()
-
