@@ -148,47 +148,58 @@ let g:mkdp_open_to_the_world = 0
 
 " Markdown 映射
 
-" ======= 标题
-imap 2# ##  
-imap 3# ### 
-imap 4# #### 
-imap 5# ##### 
-imap 6# ###### 
+if 'md' == expand('%:e') || 'markdown' == expand('%:e')
+    
+    " ======= 标题
+    imap 2# ##  
+    imap 3# ### 
+    imap 4# #### 
+    imap 5# ##### 
+    imap 6# ###### 
+    imap 3- ---<CR>
 
-" ======= 字型
-imap 1x **<ESC>i
-imap 2x ****<ESC>hi
-imap 3x ******<ESC>hhi
-imap 3` ```<CR><ESC>kA
-imap ~~ ~~<ESC>i
-imap 2> >>
-imap 3> >>>
+    " ======= 字型
+    imap 1x **<left>
+    imap 2x ****<left><left>
+    imap 3x ******<left><left><left>
+    imap 3` ```<CR><CR>```<up>
+    " imap `  ``<left>
+    imap ~~ ~~<left>
+    imap 2> >>
+    imap 3> >>>
+    imap <u <u></u><C-o>F<
+    imap <sub <sub></sub><C-o>F<
+    imap <sup <sup></sup><C-o>F<
 
-" ======= 标签
-imap [url []()<ESC>%a
-imap [img ![alt ]()<ESC>%a
-imap 3- ---<CR>
-imap <u <u></u><ESC>F<i
-imap <sub <sub></sub><ESC>F<i
-imap <sup <sup></sup><ESC>F<i
-imap <b <b></b><ESC>F<i
-imap <i <i></i><ESC>F<i
-imap br <br> 
-imap <kbd <kbd></kbd><ESC>F<i
-imap <em <em></em><ESC><F<i
+    " 流程图
+    imap =- =>
+    imap _+ ->
+    imap fchart 3`<up> flowchart<down>st=>start: 开始<CR>op1=>operation: 操作1<CR>sub1=>subroutine: 子程序1<CR>cond1=>condition: 条件1<CR>io1=>inputoutput: 输出1<CR>e=>end: 结束<CR><CR>st->op1->sub1-><CR>cond1(yes)-><CR>cond1(no)-><ESC>8kA
 
-" ========== 表格
-imap table2   \|   \|   \|<CR>\|---\|---\|<CR>\|   \|   \|
+    " ======= 标签
+    imap [url []()<left>
+    imap [img ![alt ]()<left>
+    imap <b <b></b><C-o>F<
+    imap <i <i></i><C-o>F<
+    imap \n </br> 
+    imap <kbd <kbd></kbd><C-o>F<
+    imap <em <em></em><C-o>F<
 
-" ========== 数学公式
-imap dd $$<CR><CR>$$<ESC>ki
+    " ========== 表格
+    imap tab2 \|   \|   \|<CR><ESC>O\|---\|---\|<ESC>k^a
+    imap tab3 \|   \|   \|   \|<CR><ESC>O\|---\|---\|---\|<ESC>k^a
+    imap tab4 \|   \|   \|   \|   \|<CR><ESC>O\|---\|---\|---\|---\|<ESC>k^a
 
-" ==========  插入空格
-imap kgm5 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+    " ========== 数学公式
+    imap $% $$<CR><CR>$$<up>
 
-" ========== 脚注
-imap ^^ [^]<ESC>i
+    " ==========  插入空格
+    imap 5kg &nbsp;&nbsp; 
 
+    " ========== 脚注
+    imap ^^ [^]<left>
+
+endif 
 
 "autocmd Filetype md
     "let number = 2
@@ -224,7 +235,7 @@ func! CompileRunGcc()
   endif
 endfunc
 
-map <F2> :call CompileBuildrrr()<CR>  "保存文件
+map <F2> :call CompileBuildrrr()<CR>  
 func! CompileBuildrrr()
   exec "w"
   if &filetype == 'vim'
@@ -349,6 +360,22 @@ let g:ycm_semantic_triggers =  {
 " 恢复c-a 功能
 " unmap <C-a>
 
+" set guifont=Hack:h16:cANSI
+set guifontwide=黑体:h18:cGB2312
+
+cmap src source ~\config.vim
+
 " 语法高亮
 let g:python_highlight_all = 1  "python"
 let g:javascript_plugin_jsdoc = 1 "js"
+
+
+
+
+" 可视线
+let g:indentLine_defaultGroup = 'SpecialKey'
+let g:indentLine_char_list = ['|', '¦', '┆', '┊']
+let g:indentLine_concealcursor = 'inc'
+let g:indentLine_conceallevel = 2
+
+

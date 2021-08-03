@@ -18,7 +18,7 @@ Plug 'https://github.com/preservim/nerdtree.git'
 Plug 'https://github.com/tpope/vim-surround.git'
 Plug 'iamcco/markdown-preview.nvim', { 'do': { -> mkdp#util#install() }, 'for': ['markdown', 'vim-plug']}
 Plug 'https://github.com/mermaid-js/mermaid.git'
-Plug 'jiangmiao/auto-pairs'
+" Plug 'jiangmiao/auto-pairs'
 Plug 'https://github.com/ycm-core/YouCompleteMe.git'
 Plug 'https://github.com/junegunn/vim-slash.git'
 Plug 'iamcco/mathjax-support-for-mkdp'
@@ -29,6 +29,10 @@ Plug 'https://github.com/tpope/vim-repeat.git'
 Plug 'https://github.com/vim-python/python-syntax.git'
 Plug 'https://github.com/pangloss/vim-javascript.git'
 Plug 'https://github.com/alvan/vim-closetag.git'
+Plug 'mg979/vim-visual-multi', {'branch': 'master'}
+Plug 'https://github.com/gcmt/wildfire.vim.git'
+Plug 'https://github.com/lilydjwg/fcitx.vim.git'
+Plug 'https://github.com/Yggdroot/indentLine.git'
 
 " "初始化插件系统
 call plug#end()
