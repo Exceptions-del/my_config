@@ -33,6 +33,9 @@ Plug 'mg979/vim-visual-multi', {'branch': 'master'}
 Plug 'https://github.com/gcmt/wildfire.vim.git'
 Plug 'https://github.com/lilydjwg/fcitx.vim.git'
 Plug 'https://github.com/Yggdroot/indentLine.git'
+Plug 'https://github.com/nelstrom/vim-visual-star-search.git'
+Plug 'https://github.com/tpope/vim-abolish.git'
+Plug 'https://github.com/tpope/vim-markdown.git'
 
 " "初始化插件系统
 call plug#end()

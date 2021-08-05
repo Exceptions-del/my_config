@@ -149,13 +149,22 @@ let g:mkdp_open_to_the_world = 0
 " Markdown 映射
 
 if 'md' == expand('%:e') || 'markdown' == expand('%:e')
-    
+    let g:markdown_fenced_languages = ['html','python','css','javascript','java','bash=sh']
+    let g:markdown_minlines = 100 
+    set wrap
+
     " ======= 标题
     imap 2# ##  
     imap 3# ### 
     imap 4# #### 
     imap 5# ##### 
     imap 6# ###### 
+    imap <h1 <h1></h1><left><left><left><left><left>
+    imap <h2 <h2></h2><left><left><left><left><left>
+    imap <h3 <h3></h3><left><left><left><left><left>
+    imap <h4 <h4></h4><left><left><left><left><left>
+    imap <h5 <h5></h5><left><left><left><left><left>
+    imap <h6 <h6></h6><left><left><left><left><left>
     imap 3- ---<CR>
 
     " ======= 字型
@@ -165,8 +174,8 @@ if 'md' == expand('%:e') || 'markdown' == expand('%:e')
     imap 3` ```<CR><CR>```<up>
     " imap `  ``<left>
     imap ~~ ~~<left>
-    imap 2> >>
-    imap 3> >>>
+    " imap 2> >>
+    " imap 3> >>>
     imap <u <u></u><C-o>F<
     imap <sub <sub></sub><C-o>F<
     imap <sup <sup></sup><C-o>F<
@@ -370,7 +379,15 @@ let g:python_highlight_all = 1  "python"
 let g:javascript_plugin_jsdoc = 1 "js"
 
 
+" 命令行模式映射
+cmap re-w \v'(([^']\|'\w)+)'
 
+" 修正普通模式下的 & 命令, 并为可视模式创建一个类似的命令
+nnoremap & :&&<CR>
+xnoremap & :&&<CR>
+
+" 快速切换是否禁用高亮功能
+nnoremap <silent><C-l> :<C-u>set hlsearch!<CR><C-l>
 
 " 可视线
 let g:indentLine_defaultGroup = 'SpecialKey'
