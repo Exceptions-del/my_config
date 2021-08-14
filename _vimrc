@@ -12,8 +12,8 @@ source $VIMRUNTIME/mswin.vim
 " 启用vundle
 filetype off
 set shellslash
-set rtp+=$HOME/.vim/bundle/Vundle.vim/
-call vundle#begin('$HOME/.vim/bundle/')
+set rtp+=~/.vim/bundle/Vundle.vim/
+call vundle#begin('~/.vim/bundle/')
 
 Plugin 'VundleVim/Vundle.vim'
 
