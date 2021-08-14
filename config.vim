@@ -19,7 +19,6 @@ set cursorline           " 高亮显示当前行
 set whichwrap+=<,>,h,l   " 设置光标键跨行
 set ttimeoutlen=0        " 设置<ESC>键响应时间
 set virtualedit=block,onemore   " 允许光标出现在最后一个字符的后面
-set wrap
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 
 " 代码缩进和排版
@@ -70,20 +69,6 @@ set termencoding=utf-8
 set encoding=utf-8
 set fileencodings=utf8,ucs-bom,gbk,cp936,gb2312,gb18030
 
-" gvim/macvim设置
-"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
-if has("gui_running")
-    let system = system('uname -s')
-
-    set guifont=Hack\ Regular:h16   " 设置字体
-    " set guioptions-=m           " 隐藏菜单栏
-    set guioptions-=T           " 隐藏工具栏
-    set guioptions-=L           " 隐藏左侧滚动条
-    set guioptions-=r           " 隐藏右侧滚动条
-    set guioptions-=b           " 隐藏底部滚动条
-    " set showtabline=0           " 隐藏Tab
-    " set guicursor=n-v-c:ver5    " 设置光标为竖线
-endif
 
  " 主题设置
 " set background=dark
@@ -110,12 +95,12 @@ let g:mkdp_preivew_options = {
     \ 'sync_croll_type' : 'middle',
     \ 'hide_yaml_meta' : 1
     \ }
-let g:mkdp_markdown_css = 'D:/md_css/typora-scrolls-0.5/typora-cobalt-theme-1.4.css'
-let g:mkdp_highligh_css = 'D:/md_css/highlight/src/languages/python.js'
+let g:mkdp_markdown_css = ''
+let g:mkdp_highligh_css = ''
 let g:mkdp_port = ''
 let g:mkdp_page_title = ' [$(name)]'
 
-let g:mkdp_path_to_chrome = "C:\\ProgramFiles\\Google\\Chrome\\Application\\chrome.exe"
+let g:mkdp_path_to_chrome = ""
 " 设置 chrome 浏览器的路径（或是启动 chrome（或其他现代浏览器）的命令）
 " 如果设置了该参数, g:mkdp_browserfunc 将被忽略
 
@@ -261,7 +246,7 @@ let g:vimwiki_list =[{'path':'~/vimwiki/',
 
 " YCM
 " 如果不指定python解释器路径，ycm会自己搜索一个合适的(与编译ycm时使用的python版本匹配)
-let g:ycm_server_python_interpreter = 'C:\Users\shi\AppData\Local\Programs\Python\Python39\python.exe'
+let g:ycm_server_python_interpreter = ''
 let g:ycm_confirm_extra_conf = 0
 let g:ycm_error_symbol = '✗'
 let g:ycm_warning_symbol = '✹'
@@ -378,6 +363,7 @@ let g:javascript_plugin_jsdoc = 1 "js"
 
 " 命令行模式映射
 cmap re-w \v'(([^']\|'\w)+)'
+
 " 格式话标点间的空格
 cmap fmt, %s/\v\_s\ze\,//g \| %s/\v\,\zs(\_S)/ \1/gc
 cmap fmt. %s/\v\_s\ze\.//g \| %s/\v\.\zs(\_S)/ \1/gc
