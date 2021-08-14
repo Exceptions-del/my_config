@@ -1,13 +1,12 @@
 " 为插件指定目录
 filetype off
 
-set rtp+=$Home/.vim/plugged/
-call plug#begin('$HOME/.vim/plugged')
+set rtp+=~/.vim/plugged/
+call plug#begin('~/.vim/plugged')
 
 Plug 'neoclide/coc.nvim', {'branch': 'release'}
 Plug 'https://github.com/tpope/vim-commentary.git'
 Plug 'chxuan/vim-buffer'
-Plug 'chxuan/prepare-code'
 Plug 'vim-airline/vim-airline'         
 Plug 'https://github.com/tpope/vim-endwise.git'
 Plug 'https://github.com/Shougo/echodoc.vim.git'
@@ -20,7 +19,7 @@ Plug 'https://github.com/preservim/nerdtree.git'
 Plug 'https://github.com/tpope/vim-surround.git'
 Plug 'iamcco/markdown-preview.nvim', { 'do': { -> mkdp#util#install() }, 'for': ['markdown', 'vim-plug']}
 Plug 'https://github.com/mermaid-js/mermaid.git'
-" Plug 'jiangmiao/auto-pairs'
+Plug 'jiangmiao/auto-pairs'
 " Plug 'https://github.com/ycm-core/YouCompleteMe.git'
 Plug 'https://github.com/junegunn/vim-slash.git'
 Plug 'iamcco/mathjax-support-for-mkdp'
