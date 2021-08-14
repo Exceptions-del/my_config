@@ -1,7 +1,7 @@
 " 通用设置
 
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
-set nrformats=          "  改8进制为10进制
+set nrformats=           " 改8进制为10进制
 set nocompatible         " 设置不兼容原始vi模式
 filetype on              " 设置开启文件类型侦测
 filetype plugin on       " 设置加载对应文件类型的插件
@@ -13,7 +13,8 @@ set cmdheight=2          " 设置命令行的高度
 set showcmd              " select模式下显示选中的行数
 set ruler                " 总是显示光标位置
 set laststatus=2         " 总是显示状态栏
-set number               " 开启行号显示
+set nu                   " 开启行号
+set rnu                  " 开启相对行号显示
 set cursorline           " 高亮显示当前行
 set whichwrap+=<,>,h,l   " 设置光标键跨行
 set ttimeoutlen=0        " 设置<ESC>键响应时间
@@ -33,7 +34,7 @@ set tabstop=4            " 设置编辑时制表符占用空格数
 set shiftwidth=4         " 设置格式化时制表符占用空格数
 set softtabstop=4        " 设置4个空格为制表符
 set smarttab             " 在行和段开始处使用制表符
-set nowrap               " 禁止折行
+" set nowrap               " 禁止折行
 set backspace=2          " 使用回车键正常处理indent,eol,start等
 set sidescroll=10        " 设置向右滚动字符数
 set nofoldenable         " 禁用折叠代码
@@ -75,13 +76,12 @@ if has("gui_running")
     let system = system('uname -s')
 
     set guifont=Hack\ Regular:h16   " 设置字体
-
     " set guioptions-=m           " 隐藏菜单栏
     set guioptions-=T           " 隐藏工具栏
     set guioptions-=L           " 隐藏左侧滚动条
     set guioptions-=r           " 隐藏右侧滚动条
     set guioptions-=b           " 隐藏底部滚动条
-    set showtabline=0           " 隐藏Tab
+    " set showtabline=0           " 隐藏Tab
     " set guicursor=n-v-c:ver5    " 设置光标为竖线
 endif
 
@@ -90,9 +90,9 @@ endif
 let g:onedark_termcolors=256
 colorscheme evening
 
-" 绑定 %% 为EX模式下输入工作路径
+" 绑定 %% 为EX模式下输入工作路径 %^ 则输入当前文件名
 cnoremap <expr> %^ getcmdtype() == ':' ? expand('%:p') : '%^'
-cnoremap <expr> %% getcmdtype() == ':' ? expand('%:t') : '%%'
+cnoremap <expr> %% getcmdtype() == ':' ? expand('%:p:h') : '%%'
 
 set nocompatible
 set helplang=cn
@@ -148,10 +148,9 @@ let g:mkdp_open_to_the_world = 0
 
 " Markdown 映射
 
-if 'md' == expand('%:e') || 'markdown' == expand('%:e')
+if expand('%:e') == 'md' || expand('%:e') == 'markdown'
     let g:markdown_fenced_languages = ['html','python','css','javascript','java','bash=sh']
     let g:markdown_minlines = 100 
-    set wrap
 
     " ======= 标题
     imap 2# ##  
@@ -188,9 +187,9 @@ if 'md' == expand('%:e') || 'markdown' == expand('%:e')
     " ======= 标签
     imap [url []()<left>
     imap [img ![alt ]()<left>
-    imap <b <b></b><C-o>F<
+    imap <b> <b></b><C-o>F<
     imap <i <i></i><C-o>F<
-    imap \n </br> 
+    imap <br </br>
     imap <kbd <kbd></kbd><C-o>F<
     imap <em <em></em><C-o>F<
 
@@ -203,40 +202,35 @@ if 'md' == expand('%:e') || 'markdown' == expand('%:e')
     imap $% $$<CR><CR>$$<up>
 
     " ==========  插入空格
-    imap 5kg &nbsp;&nbsp; 
+    imap 5kg &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 
 
     " ========== 脚注
     imap ^^ [^]<left>
 
 endif 
 
-"autocmd Filetype md
-    "let number = 2
-    " imap 
-
-" Call figlet
-" map tx :\\w !figlet
-
 " 一键编译
-map \\r :call CompileRunGcc()<CR>   
+map <F3> :call CompileRunGcc()<CR>   
 func! CompileRunGcc()
   exec "w"
   if &filetype == 'c'
-    exec "!g++ % -o %<"
-    exec "!time ./%<"
+    exec "!gcc % -o %<"
+    exec "!%<.exe"
   elseif &filetype == 'cpp'
-    exec "!g++ % -o %<"
-    exec "!time ./%<"
+    exec "!gcc % -o %<"
+    exec "!%<.exe"
   elseif &filetype == 'java'
     exec "!javac %"
-    exec "!time java %<"
+    exec "!java %<.class"
   elseif &filetype == 'sh'
     :!time bash %
   elseif &filetype == 'python'
     silent! exec "!clear"
-    exec "!time python3 %"
+    exec "!python %"
   elseif &filetype == 'html'
-    exec "!firefox % &"
+    exec "!chrome %:p"
+  elseif &filetype == 'md'
+    exec "MarkdownPreview"
   elseif &filetype == 'markdown'
     exec "MarkdownPreview"
   elseif &filetype == 'vimwiki'
@@ -319,6 +313,9 @@ set suffixesadd+=.txt
 set suffixesadd+=.html
 set suffixesadd+=.css
 set suffixesadd+=.sh
+set suffixesadd+=.md
+set suffixesadd+=.markdown
+
 
 
 " airline
@@ -381,6 +378,11 @@ let g:javascript_plugin_jsdoc = 1 "js"
 
 " 命令行模式映射
 cmap re-w \v'(([^']\|'\w)+)'
+" 格式话标点间的空格
+cmap fmt, %s/\v\_s\ze\,//g \| %s/\v\,\zs(\_S)/ \1/gc
+cmap fmt. %s/\v\_s\ze\.//g \| %s/\v\.\zs(\_S)/ \1/gc
+cmap fmt3 %s/\v\,\zs(\_S)/ \1/g
+cmap fmt4 %s/\v\.\zs(\_S)/ \1/g
 
 " 修正普通模式下的 & 命令, 并为可视模式创建一个类似的命令
 nnoremap & :&&<CR>
@@ -388,6 +390,10 @@ xnoremap & :&&<CR>
 
 " 快速切换是否禁用高亮功能
 nnoremap <silent><C-l> :<C-u>set hlsearch!<CR><C-l>
+" 切换是否换行(原键是在Gvim下是查找)
+nnoremap <F4> :set wrap!<CR>  
+" 复制缩进开关
+nnoremap <f5> :set paste!<CR>
 
 " 可视线
 let g:indentLine_defaultGroup = 'SpecialKey'
@@ -395,4 +401,14 @@ let g:indentLine_char_list = ['|', '¦', '┆', '┊']
 let g:indentLine_concealcursor = 'inc'
 let g:indentLine_conceallevel = 2
 
+" j 和 k 移动修改为移动到屏幕行,而不是实际行
+nnoremap k gk
+nnoremap gk k
+nnoremap j gj
+nnoremap gj j
 
+" matchit插件
+set nocompatible
+filetype plugin on
+runtime macros/matchit.vim
+packadd! matchit
