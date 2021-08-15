@@ -4,10 +4,9 @@ filetype off
 set rtp+=~/.vim/plugged/
 call plug#begin('~/.vim/plugged')
 
-Plug 'neoclide/coc.nvim', {'branch': 'release'}
+" Plug 'neoclide/coc.nvim', {'branch': 'release'}
 Plug 'https://github.com/tpope/vim-commentary.git'
-Plug 'chxuan/vim-buffer'
-Plug 'vim-airline/vim-airline'         
+Plug 'chxuan/vim-buffer'    
 Plug 'https://github.com/tpope/vim-endwise.git'
 Plug 'https://github.com/Shougo/echodoc.vim.git'
 Plug 'vim-airline/vim-airline-themes'
