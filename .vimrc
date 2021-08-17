@@ -9,9 +9,8 @@ source $VIMRUNTIME/mswin.vim
 
 
 
-source C:/Users/shi/config.vim  " 配置文件
-source C:/Users/shi/vundle.vim  " vundle插件管理
-source C:/Users/shi/plug.vim    " plug插件管理
+source $HOME/config.vim  " 配置文件
+source $HOME/plug.vim    " plug插件管理
 
 
 if &diffopt !~# 'internal'
