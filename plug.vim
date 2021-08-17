@@ -1,12 +1,14 @@
 " 为插件指定目录
 filetype off
 
-set rtp+=~/.vim/plugged/
-call plug#begin('~/.vim/plugged')
+set rtp+=$Home/.vim/plugged/
+call plug#begin('$HOME/.vim/plugged')
 
-" Plug 'neoclide/coc.nvim', {'branch': 'release'}
+Plug 'neoclide/coc.nvim', {'branch': 'release'}
 Plug 'https://github.com/tpope/vim-commentary.git'
-Plug 'chxuan/vim-buffer'    
+Plug 'chxuan/vim-buffer'
+Plug 'chxuan/prepare-code'
+Plug 'vim-airline/vim-airline'         
 Plug 'https://github.com/tpope/vim-endwise.git'
 Plug 'https://github.com/Shougo/echodoc.vim.git'
 Plug 'vim-airline/vim-airline-themes'
