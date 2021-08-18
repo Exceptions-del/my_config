@@ -77,8 +77,8 @@ if has("gui_running")
     
     noremap <C-a> <C-a>
     noremap <C-f> <C-f>         
-    set guifontwide=黑体:h18:cGB2312
-    set guifont=Hack\ Regular:h16   " 设置字体
+    " set guifontwide=黑体:h18:cGB2312
+    " set guifont=Hack\ Regular:h16   " 设置字体
     " set guioptions-=m           " 隐藏菜单栏
     set guioptions-=T           " 隐藏工具栏
     set guioptions-=L           " 隐藏左侧滚动条
@@ -104,12 +104,12 @@ let g:mkdp_preivew_options = {
     \ 'sync_croll_type' : 'middle',
     \ 'hide_yaml_meta' : 1
     \ }
-let g:mkdp_markdown_css = 'D:/md_css/typora-scrolls-0.5/typora-cobalt-theme-1.4.css'
-let g:mkdp_highligh_css = 'D:/md_css/highlight/src/languages/python.js'
+let g:mkdp_markdown_css = ''
+let g:mkdp_highligh_css = ''
 let g:mkdp_port = ''
 let g:mkdp_page_title = ' [$(name)]'
 
-let g:mkdp_path_to_chrome = "C:\\ProgramFiles\\Google\\Chrome\\Application\\chrome.exe"
+let g:mkdp_path_to_chrome = ""
 " 设置 chrome 浏览器的路径（或是启动 chrome（或其他现代浏览器）的命令）
 " 如果设置了该参数, g:mkdp_browserfunc 将被忽略
 
