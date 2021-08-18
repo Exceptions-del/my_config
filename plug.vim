@@ -6,7 +6,6 @@ call plug#begin('$HOME/.vim/plugged')
 
 "  Plug 'neoclide/coc.nvim', {'branch': 'release'}
 Plug 'https://github.com/tpope/vim-commentary.git'
-Plug 'chxuan/prepare-code'
 Plug 'vim-airline/vim-airline'         
 Plug 'https://github.com/tpope/vim-endwise.git'
 Plug 'https://github.com/Shougo/echodoc.vim.git'
