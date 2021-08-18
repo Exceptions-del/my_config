@@ -4,7 +4,7 @@ filetype off
 set rtp+=$Home/.vim/plugged/
 call plug#begin('$HOME/.vim/plugged')
 
-Plug 'neoclide/coc.nvim', {'branch': 'release'}
+"  Plug 'neoclide/coc.nvim', {'branch': 'release'}
 Plug 'https://github.com/tpope/vim-commentary.git'
 Plug 'chxuan/vim-buffer'
 Plug 'chxuan/prepare-code'
@@ -19,7 +19,6 @@ Plug 'vimwiki/vimwiki'
 Plug 'https://github.com/preservim/nerdtree.git'
 Plug 'https://github.com/tpope/vim-surround.git'
 Plug 'iamcco/markdown-preview.nvim', { 'do': { -> mkdp#util#install() }, 'for': ['markdown', 'vim-plug']}
-Plug 'https://github.com/mermaid-js/mermaid.git'
 Plug 'jiangmiao/auto-pairs'
 " Plug 'https://github.com/ycm-core/YouCompleteMe.git'
 Plug 'https://github.com/junegunn/vim-slash.git'
