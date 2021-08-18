@@ -78,7 +78,7 @@ if has("gui_running")
     noremap <C-a> <C-a>
     noremap <C-f> <C-f>         
     " set guifontwide=黑体:h18:cGB2312
-    " set guifont=Hack\ Regular:h16   " 设置字体
+    "     set guifont=SourceCodePro\ Medium\ 18   " 设置字体 
     " set guioptions-=m           " 隐藏菜单栏
     set guioptions-=T           " 隐藏工具栏
     set guioptions-=L           " 隐藏左侧滚动条
