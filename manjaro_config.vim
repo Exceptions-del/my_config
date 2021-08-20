@@ -297,7 +297,7 @@ let g:ycm_semantic_triggers =  {
 "---------------------------------------------------------------
 
 " 命令行模式映射
-cmap src source ~\.vimrc
+cmap src source ~\config.vim
 cmap re-w \v'(([^']\|'\w)+)'
 
 " 格式化标点间的空格
