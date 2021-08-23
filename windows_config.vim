@@ -1,7 +1,6 @@
 " 通用设置
 
 "----------------------------------------------------------------------
-set nocompatible
 set helplang=cn          " 改帮助文档为中文(需要先安装中文文档)
 set nrformats=           " 改8进制为10进制
 set nocompatible         " 设置不兼容原始vi模式
