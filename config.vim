@@ -190,7 +190,7 @@ func Mkre()
         imap tab4 \|   \|   \|   \|   \|<CR><ESC>O\|---\|---\|---\|---\|<ESC>k^a
 
         " ========== 数学公式
-        imap $% $$<CR><CR>$$<up>
+        imap $math $$<CR><CR>$$<up>
 
         " ==========  插入空格
         imap 5kg &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 
