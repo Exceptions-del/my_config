@@ -11,10 +11,10 @@
 	margin-bottom: 0;
 }
 .markdown-body {
-	font-family: "思源宋体", Helvetica, "Segoe UI", Arial, freesans, sans-serif, "Apple Color Emoji",
+	font-family: "思源黑体", Helvetica, "Segoe UI", Arial, freesans, sans-serif, "Apple Color Emoji",
 		"Segoe UI Emoji", "Segoe UI Symbol";
 	font-size: 16px;
-	color: #cedded;
+	color: #c8c8c8;
 	line-height: 1.6;
 	word-wrap: break-word;
 	padding: 45px;
@@ -112,7 +112,7 @@
 	border-left: 4px solid #f2f2f2;
 }
 .markdown-body table {
-    font-family: 'Source Code Pro';
+	font-family: "Source Code Pro";
 	display: block;
 	width: 100%;
 	overflow: auto;
@@ -156,7 +156,7 @@
 	border: 0;
 	-webkit-border-radius: 3px;
 	border-radius: 3px;
-	background-color: #dfdfdf;
+	background-color: transparent;
 }
 .markdown-body pre code:before,
 .markdown-body pre code:after {
@@ -169,7 +169,7 @@
 	padding-bottom: 0.2em;
 	margin: 0;
 	font-size: 85%;
-	background-color: rgba(255, 255, 255, 0.35);
+	background-color: rgba(100, 100, 100, 0.35);
 	-webkit-border-radius: 3px;
 	border-radius: 3px;
 }
