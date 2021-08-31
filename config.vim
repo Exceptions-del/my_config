@@ -21,6 +21,8 @@ set rnu                  " 开启相对行号显示
 set whichwrap+=<,>,h,l   " 设置光标键跨行
 set ttimeoutlen=0        " 设置<ESC>键响应时间
 set virtualedit=block,onemore   " 允许光标出现在最后一个字符的后面
+set lines=999
+set columns=999
 "----------------------------------------------------------------------
 
 " 代码缩进和排版
@@ -190,7 +192,7 @@ func Mkre()
         imap tab4 \|   \|   \|   \|   \|<CR><ESC>O\|---\|---\|---\|---\|<ESC>k^a
 
         " ========== 数学公式
-        imap $math $$<CR><CR>$$<up>
+        imap $% $$<CR><CR>$$<up>
 
         " ==========  插入空格
         imap 5kg &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 
@@ -391,6 +393,9 @@ highlight link EchoDocPopup Pmenu
 
 "-----------------------------------------------------------------------------
 
+"repeat
+silent! call repeat#set("\<Plug>MyWonderfulMap", v:count)
+
  " 主题设置
 " set background=dark
 let g:onedark_termcolors=256
@@ -536,5 +541,4 @@ func! CompileBuildrrr()
     exec "echo"
   endif
 endfunc
-
 
