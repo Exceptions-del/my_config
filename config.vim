@@ -21,8 +21,9 @@ set rnu                  " 开启相对行号显示
 set whichwrap+=<,>,h,l   " 设置光标键跨行
 set ttimeoutlen=0        " 设置<ESC>键响应时间
 set virtualedit=block,onemore   " 允许光标出现在最后一个字符的后面
-set lines=999
-set columns=999
+" set lines=999
+" set columns=999
+set nowrap               "关闭折行
 "----------------------------------------------------------------------
 
 " 代码缩进和排版
@@ -56,10 +57,10 @@ set ignorecase          " 搜索时大小写不敏感
 "----------------------------------------------------------------------
 " 缓存设置
 "----------------------------------------------------------------------
-set nobackup            " 设置不备份
-set noswapfile          " 禁止生成临时文件
+" set nobackup            " 设置不备份
+" set noswapfile          " 禁止生成临时文件
 set autoread            " 文件在vim之外修改过，自动重新读入
-set autowrite           " 设置自动保存
+" set autowrite           " 设置自动保存
 set confirm             " 在处理未保存或只读文件的时候，弹出确认
 
 "----------------------------------------------------------------------
@@ -84,8 +85,6 @@ set guioptions-=L           " 隐藏左侧滚动条
 set guioptions-=r           " 隐藏右侧滚动条
 set guioptions-=b           " 隐藏底部滚动条
 set showtabline=0           " 隐藏Tab
-
-
 
 "----------------------------------------------------------------------
 
@@ -137,81 +136,10 @@ let g:mkdp_open_to_the_world = 0
 
 "--------------------------------------------------
 
-" Markdown 映射
-
-map <F3> :call Mkre()<CR>   
-func Mkre()
-    " if expand('%:e') == 'md' || expand('%:e') == 'markdown'
-        let g:markdown_fenced_languages = ['html','python','css','javascript','java','bash=sh']
-        let g:markdown_minlines = 100 
-
-        " ======= 标题
-        imap 2# ##  
-        imap 3# ### 
-        imap 4# #### 
-        imap 5# ##### 
-        imap 6# ###### 
-        imap <h1 <h1></h1><left><left><left><left><left>
-        imap <h2 <h2></h2><left><left><left><left><left>
-        imap <h3 <h3></h3><left><left><left><left><left>
-        imap <h4 <h4></h4><left><left><left><left><left>
-        imap <h5 <h5></h5><left><left><left><left><left>
-        imap <h6 <h6></h6><left><left><left><left><left>
-        imap 3- ---<CR>
-
-        " ======= 字型
-        imap 1x **<left>
-        imap 2x ****<left><left>
-        imap 3x ******<left><left><left>
-        imap 3` ```<CR><up><ESC>A
-        imap ~~ ~~<left>
-        " imap 2> >>
-        " imap 3> >>>
-        imap <u <u></u><C-o>F<
-        imap <sub <sub></sub><C-o>F<
-        imap <sup <sup></sup><C-o>F<
-        imap <code <code></code><C-o>F<
-
-        " 流程图
-        imap =- =>
-        imap _+ ->
-        imap fchart 3`<CR><C-o>A flowchart<down>st=>start: 开始<CR>op1=>operation: 操作1<CR>sub1=>subroutine: 子程序1<CR>cond1=>condition: 条件1<CR>io1=>inputoutput: 输出1<CR>e=>end: 结束<CR><CR>st->op1->sub1-><CR>cond1(yes)-><CR>cond1(no)-><ESC>9kA
-
-        " ======= 标签
-        imap [url []()<left>
-        imap [img ![alt ]()<left>
-        imap <b> <b></b><C-o>F<
-        imap <i <i></i><C-o>F<
-        imap <br </br>
-        imap <kbd <kbd></kbd><C-o>F<
-        imap <em <em></em><C-o>F<
-
-        " ========== 表格
-        imap tab2 \|   \|   \|<CR><ESC>O\|---\|---\|<ESC>k^a
-        imap tab3 \|   \|   \|   \|<CR><ESC>O\|---\|---\|---\|<ESC>k^a
-        imap tab4 \|   \|   \|   \|   \|<CR><ESC>O\|---\|---\|---\|---\|<ESC>k^a
-
-        " ========== 数学公式
-        imap $% $$<CR><CR>$$<up>
-
-        " ==========  插入空格
-        imap 5kg &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 
-
-        " ========== 脚注
-        imap ^^ [^]<left>
-
-endfunc 
-
-" if expand('%:e') == 'md' || expand('%:e') == 'markdown'
-    " call Mkre()
-" endif 
-autocmd Filetype markdown call Mkre()
-autocmd FileType md call Mkre()
-
 "coc 
-
 "--------------------------------------------------------------
-let g:coc_global_extensions = ['coc-json',
+let g:coc_global_extensions = [
+            \'coc-json',
             \'coc-vimlsp',
             \'coc-marketplace',
             \'coc-java',
@@ -227,7 +155,8 @@ let g:coc_global_extensions = ['coc-json',
             \'coc-clangd',
             \'coc-yank',
             \'coc-syntax',
-            \'coc-snippets']
+            \'coc-snippets'
+            \      ]
 " set hidden
 set updatetime=100
 set shortmess+=c
@@ -263,6 +192,7 @@ else
 endif
 
 " Make <CR> auto-select the first completion item and notify coc.nvim to
+
 " format on enter, <cr> could be remapped by other vim plugin
 
 " Use `[g` and `]g` to navigate diagnostics
@@ -288,10 +218,6 @@ function! s:show_documentation()
     execute '!' . &keywordprg . " " . expand('<cword>')
   endif
 endfunction
-
-
-" Highlight the symbol and its references when holding the cursor.
-autocmd CursorHold * silent call CocActionAsync('highlight')
 
 " Symbol renaming.
 nmap <leader>rn <Plug>(coc-rename)
@@ -328,55 +254,6 @@ xmap ic <Plug>(coc-classobj-i)
 omap ic <Plug>(coc-classobj-i)
 xmap ac <Plug>(coc-classobj-a)
 omap ac <Plug>(coc-classobj-a)
-
-" Remap <C-f> and <C-b> for scroll float windows/popups.
-if has('nvim-0.4.0') || has('patch-8.2.0750')
-  nnoremap <silent><nowait><expr> <C-f> coc#float#has_scroll() ? coc#float#scroll(1) : "\<C-f>"
-  nnoremap <silent><nowait><expr> <C-b> coc#float#has_scroll() ? coc#float#scroll(0) : "\<C-b>"
-  inoremap <silent><nowait><expr> <C-f> coc#float#has_scroll() ? "\<c-r>=coc#float#scroll(1)\<cr>" : "\<Right>"
-  inoremap <silent><nowait><expr> <C-b> coc#float#has_scroll() ? "\<c-r>=coc#float#scroll(0)\<cr>" : "\<Left>"
-  vnoremap <silent><nowait><expr> <C-f> coc#float#has_scroll() ? coc#float#scroll(1) : "\<C-f>"
-  vnoremap <silent><nowait><expr> <C-b> coc#float#has_scroll() ? coc#float#scroll(0) : "\<C-b>"
-endif
-
-" Use CTRL-S for selections ranges.
-" Requires 'textDocument/selectionRange' support of language server.
-nmap <silent> <C-s> <Plug>(coc-range-select)
-xmap <silent> <C-s> <Plug>(coc-range-select)
-
-" Add `:Format` command to format current buffer.
-command! -nargs=0 Format :call CocAction('format')
-
-" Add `:Fold` command to fold current buffer.
-command! -nargs=? Fold :call     CocAction('fold', <f-args>)
-
-" Add `:OR` command for organize imports of the current buffer.
-command! -nargs=0 OR   :call     CocAction('runCommand', 'editor.action.organizeImport')
-
-" Add (Neo)Vim's native statusline support.
-" NOTE: Please see `:h coc-status` for integrations with external plugins that
-" provide custom statusline: lightline.vim, vim-airline.
-set statusline^=%{coc#status()}%{get(b:,'coc_current_function','')}
-
-" Mappings for CoCList
-" Show all diagnostics.
-nnoremap <silent><nowait> <space>a  :<C-u>CocList diagnostics<cr>
-" Manage extensions.
-nnoremap <silent><nowait> <space>e  :<C-u>CocList extensions<cr>
-" Show commands.
-nnoremap <silent><nowait> <space>c  :<C-u>CocList commands<cr>
-" Find symbol of current document.
-nnoremap <silent><nowait> <space>o  :<C-u>CocList outline<cr>
-" Search workspace symbols.
-nnoremap <silent><nowait> <space>s  :<C-u>CocList -I symbols<cr>
-" Do default action for next item.
-nnoremap <silent><nowait> <space>j  :<C-u>CocNext<CR>
-" Do default action for previous item.
-nnoremap <silent><nowait> <space>k  :<C-u>CocPrev<CR>
-" Resume latest coc list.
-nnoremap <silent><nowait> <space>p  :<C-u>CocListResume<CR>
-
-
 "----------------------------------------------------------------
 
 
@@ -430,42 +307,6 @@ let g:indentLine_concealcursor = 'inc'
  
 "---------------------------------------------------------------
 
-" 命令行模式映射
-cmap src source ~\config.vim
-cmap re-w \v'(([^']\|'\w)+)'
-cmap x16 \v#(\x{6}\|\x{3})
-
-" 格式化标点间的空格
-cmap fmt, %s/\v\_s\ze\,//g \| %s/\v\,\zs(\_S)/ \1/gc
-cmap fmt. %s/\v\_s\ze\.//g \| %s/\v\.\zs(\_S)/ \1/gc
-cmap fmt3 %s/\v\,\zs(\_S)/ \1/g
-cmap fmt4 %s/\v\.\zs(\_S)/ \1/g
-
-" 修正普通模式下的 & 命令, 并为可视模式创建一个类似的命令
-nnoremap & :&&<CR>
-xnoremap & :&&<CR>
-
-" 快速切换是否禁用高亮功能
-nnoremap <silent><C-l> :<C-u>set hlsearch!<CR><C-l>
-" 切换是否换行
-nnoremap <F4> :set wrap!<CR>  
-" 复制缩进开关
-set pastetoggle=<f5>
-
-" 绑定 %% 为EX模式下输入工作路径 %^ 则输入当前文件名
-cnoremap <expr> %^ getcmdtype() == ':' ? expand('%:p') : '%^'
-cnoremap <expr> %% getcmdtype() == ':' ? expand('%:p:h') : '%%'
-
-" j 和 k 移动修改为移动到屏幕行,而不是实际行
-nnoremap k gk
-nnoremap gk k
-nnoremap j gj
-nnoremap gj j
-
-noremap <c-z> <NOP>
-
-"---------------------------------------------
-
 " matchit插件
 set nocompatible
 filetype plugin on
@@ -503,6 +344,11 @@ set suffixesadd+=.markdown
 
 "---------------------------
 
+" Nerdtree
+let g:NERDTreeWinSize = 25
+let g:NERDTreeShowLineNumbers=1
+
+
 " 一键编译
 map <F2> :call CompileRunGcc()<CR>   
 func! CompileRunGcc()
@@ -536,9 +382,10 @@ map <F6> :call CompileBuildrrr()<CR>
 func! CompileBuildrrr()
   exec "w"
   if &filetype == 'vim'
-    exec "source C:/User/shi/.vimrc"
+    exec "source $HOME/.vimrc"
   elseif &filetype == 'markdown'
     exec "echo"
   endif
 endfunc
 
+source $HOME/imap.vim
