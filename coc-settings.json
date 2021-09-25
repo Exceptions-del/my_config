@@ -135,5 +135,6 @@
         "filetypes": ["sql", "mysql"]
         }
     },
-    "markdown-preview-enhanced.previewTheme": "github-light.css"
+    "markdown-preview-enhanced.previewTheme": "github-light.css",
+    "":""
 }
