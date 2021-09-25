@@ -1,0 +1,139 @@
+{
+	"coc.preferences.semanticTokensHighlights": false,
+	"coc.preferences.enableFloatHighlight": true,
+	"coc.preferences.extensionUpdateCheck": "daily",
+	"coc.preferences.messageLevel": "error",
+	"coc.source.around.firstMatch": false,
+	"coc.source.buffer.firstMatch": false,
+	"coc.source.syntax.firstMatch": false,
+	"suggest.detailMaxLength": 60,
+	"suggest.noselect": true,
+	"suggest.enablePreselect": false,
+	"suggest.triggerAfterInsertEnter": true,
+	"suggest.autoTrigger": "always",
+	"suggest.timeout": 5000,
+	"suggest.enablePreview": true,
+	"suggest.floatEnable": true,
+	"suggest.detailField": "preview",
+	"suggest.snippetIndicator": "",
+	"suggest.triggerCompletionWait": 100,
+	"suggest.echodocSupport": true,
+	"diagnostic.signOffset": 1,
+	"diagnostic.displayByAle": false,
+	"diagnostic.refreshOnInsertMode": false,
+	"diagnostic.refreshAfterSave": false,
+	"diagnostic.checkCurrentLine": true,
+	"diagnostic.virtualTextPrefix": " ❯❯❯ ",
+	"diagnostic.virtualText": true,
+	"codeLens.enable": true,
+	"list.previewHighlightGroup": "Statement",
+	"list.nextKeymap": "<C-e>",
+	"list.previousKeymap": "<C-u>",
+	"importCost.bundleSizeDecoration": "both",
+	"importCost.typescriptExtensions": ["\\.tsx?$"],
+	"importCost.javascriptExtensions": ["\\.jsx?$"],
+	"importCost.showCalculatingDecoration": true,
+	"importCost.debug": false,
+	"coc.preferences.formatOnSaveFiletypes": [
+		"javascript",
+		"typescript",
+		"html",
+		"css",
+		"json",
+		"java",
+		"python",
+		"vue",
+		"svelte",
+		"c",
+		"prisma"
+	],
+	"yaml.format.enable": true,
+	"signature.target": "float",
+	"yank.enableCompletion": false,
+	"typescript.suggestionActions.enabled": true,
+	"typescript.format.enabled": true,
+	"jest.watch": false,
+	"explorer.width": 38,
+	"explorer.quitOnOpen": true,
+	"explorer.sources": [
+		{
+			"name": "buffer",
+			"expand": false
+		},
+		{
+			"name": "file",
+			"expand": true
+		}
+	],
+	"explorer.file.column.indent.indentLine": true,
+	"explorer.file.showHiddenFiles": true,
+	"explorer.icon.enableNerdfont": true,
+	"explorer.file.column.git.showIgnored": true,
+	"explorer.keyMappingMode": "none",
+	"explorer.buffer.showHiddenBuffers": false,
+	"flutter.outlineWidth": 40,
+	"flutter.outlineIconPadding": 0,
+	"flutter.UIPath": true,
+	"flutter.openDevLogSplitCommand": "botright 12split",
+	"flutter.lsp.initialization.onlyAnalyzeProjectsWithOpenFiles": false,
+	"flutter.trace.server": "off",
+	"tslint.autoFixOnSave": false,
+	"python.autoComplete.addBrackets": true,
+	"python.jediEnabled": false,
+	"python.formatting.provider": "yapf",
+	"python.formatting.yapfArgs": [
+		"--style",
+		"{SPACES_AROUND_POWER_OPERATOR: True, SPACES_BEFORE_COMMENT: 1}"
+	],
+	"html.format.enable": true,
+	"javascript.referencesCodeLens.enable": true,
+	"javascript.showUnused": true,
+	"javascript.suggest.names": true,
+	"javascript.suggestionActions.enabled": true,
+	"json.format.enable": true,
+	"eslint.autoFixOnSave": false,
+	"prettier.printWidth": 100,
+	"prettier.eslintIntegration": true,
+	"prettier.disableLanguages": [],
+	"prettier.formatterPriority": 1,
+	"prettier.useTabs": true,
+	"prettier.trailingComma": "all",
+	"prettier.singleQuote": false,
+	"todolist.autoUpload": true,
+	"todolist.promptForReminder": false,
+	"coc-actions.hideCursor": false,
+	"coc-actions.showActionKind": true,
+	"diagnostic-languageserver.filetypes": {
+		"vim": "vint",
+		"email": "languagetool",
+		"markdown": ["write-good", "markdownlint"],
+		"sh": "shellcheck",
+		"elixir": ["mix_credo", "mix_credo_compile"],
+		"eelixir": ["mix_credo", "mix_credo_compile"],
+		"php": ["phpstan", "psalm"]
+	},
+	"diagnostic-languageserver.formatFiletypes": {
+		"elixir": "mix_format",
+		"eelixir": "mix_format"
+	},
+	"languageserver": {
+		"ccls": {
+			"command": "ccls",
+			"filetypes": ["c", "cpp", "cuda", "objc", "objcpp"],
+			"rootPatterns": [".ccls", ".ccls-root", "compile_commands.json", ".git/", ".hg/"],
+			"initializationOptions": {
+				"cache": {
+					"directory": "/tmp/ccls"
+				}
+			}
+		}
+	},
+    "languageserver": {
+  "     sql": {
+        "command": "sql-language-server",
+        "args" : ["up", "--method", "stdio"],
+        "filetypes": ["sql", "mysql"]
+        }
+    },
+    "markdown-preview-enhanced.previewTheme": "github-light.css"
+}
