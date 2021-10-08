@@ -173,42 +173,6 @@ let g:ycm_semantic_triggers =  {
            \ 'cs,lua,javascript': ['re!\w{2}'],
            \ }
 
-"---------------------------------------------------------------
-
-" 命令行模式映射
-cmap src source ~\config.vim
-cmap re-w \v'(([^']\|'\w)+)'
-
-" 格式化标点间的空格
-cmap fmt, %s/\v\_s\ze\,//g \| %s/\v\,\zs(\_S)/ \1/gc
-cmap fmt. %s/\v\_s\ze\.//g \| %s/\v\.\zs(\_S)/ \1/gc
-cmap fmt3 %s/\v\,\zs(\_S)/ \1/g
-cmap fmt4 %s/\v\.\zs(\_S)/ \1/g
-
-" 修正普通模式下的 & 命令, 并为可视模式创建一个类似的命令
-nnoremap & :&&<CR>
-xnoremap & :&&<CR>
-
-" 快速切换是否禁用高亮功能
-nnoremap <silent><C-l> :<C-u>set hlsearch!<CR><C-l>
-" 切换是否换行(原键是在Gvim下是查找)
-nnoremap <F4> :set wrap!<CR>  
-" 复制缩进开关
-nnoremap <f5> :set paste!<CR>
-
-
-" 绑定 %% 为EX模式下输入工作路径 %^ 则输入当前文件名
-cnoremap <expr> %^ getcmdtype() == ':' ? expand('%:p') : '%^'
-cnoremap <expr> %% getcmdtype() == ':' ? expand('%:p:h') : '%%'
-
-" j 和 k 移动修改为移动到屏幕行,而不是实际行
-nnoremap k gk
-nnoremap gk k
-nnoremap j gj
-nnoremap gj j
-
-noremap <c-z> <NOP>
-
 "---------------------------------------------
 
 " matchit插件
