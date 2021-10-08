@@ -7,27 +7,19 @@ source $VIMRUNTIME/mswin.vim
 " Use the internal diff if available.
 " Otherwise use the special 'diffexpr' for Windows.
 
-"  Gvim中文菜单乱码解决方案
- 
-" 设置文件编码格式
-set encoding=utf-8
-set fileencodings=utf-8,chinese,latin-1,gbk,gb18030,gk2312
-if has("win32")
- set fileencoding=chinese
-else
- set fileencoding=utf-8
-endif
- 
+
+
+source $HOME/config.vim  " 配置文件
+" source $HOME/vundle.vim
+source $HOME/plug.vim    " plug插件管理
+source $HOME/imap.vim  " 按键映射
+
 "解决菜单乱码
 source $VIMRUNTIME/delmenu.vim
 source $VIMRUNTIME/menu.vim
- 
+
 "解决consle提示信息输出乱码
 language messages zh_CN.utf-8
-
-source $HOME/config.vim  " 配置文件
-source $HOME/plug.vim    " plug插件管理
-
 
 if &diffopt !~# 'internal'
   set diffexpr=MyDiff()
@@ -64,3 +56,6 @@ function MyDiff()
     let &shellxquote=l:shxq_sav
   endif
 endfunction
+
+
+
