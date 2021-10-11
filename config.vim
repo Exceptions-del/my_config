@@ -75,10 +75,10 @@ set fileencodings=utf8,ucs-bom,gbk,cp936,gb2312,gb18030
 
 " gvim/macvim设置
 "----------------------------------------------------------------------
-noremap <C-a> <C-a>
-noremap <C-f> <C-f>         
+" noremap <C-a> <C-a>
+" noremap <C-f> <C-f>
 set guifontwide=黑体:h18:cGB2312
-set guifont=SourceCodePro-Medium:h16   " 设置字体
+set guifont=Source\ Code\ Pro\ Medium:h16   " 设置字体
 " set guioptions-=m           " 隐藏菜单栏
 set guioptions-=T           " 隐藏工具栏
 set guioptions-=L           " 隐藏左侧滚动条
@@ -91,7 +91,7 @@ set showtabline=0           " 隐藏Tab
 " MarkdownPreview 配置
 let g:mkdp_open_ip = ''
 let g:mkdp_echo_preview_url = 0
-let g:mkdp_browser = 'chrome'
+let g:mkdp_browser = 'C:\Program Files\Google\Chrome\Application\chrome'
 let g:mkdp_browserfunc = ''
 let g:mkdp_preivew_options = {
     \ 'mkit': {},
@@ -136,7 +136,7 @@ let g:mkdp_open_to_the_world = 0
 
 "--------------------------------------------------
 
-"coc 
+"coc
 "--------------------------------------------------------------
 let g:coc_global_extensions = [
             \'coc-json',
@@ -287,6 +287,7 @@ colorscheme evening
 let g:airline_theme="badwolf" " 设置状态栏主题
 let g:airline_powerline_fonts = 1
 let g:airline#extensions#tabline#enabled = 1
+let g:airline#extensions#tabline#formatter = 'default'
 if !exists('g:airline_symbols')
    let g:airline_symbols = {}
 endif
@@ -294,6 +295,8 @@ let g:airline_left_sep = ''
 let g:airline_left_alt_sep = ''
 let g:airline_right_sep = ''
 let g:airline_right_alt_sep = ''
+let g:airline_symbols.branch = '⭠'
+let g:airline_symbols.readonly = '⭤'
 
 " 可视化缩进
 let g:indent_guides_enable_on_vim_startup = 0  " 默认关闭
@@ -304,22 +307,19 @@ let g:indent_guides_start_level           = 2  " 从第二层开始可视化显�
 let g:indentLine_defaultGroup = 'SpecialKey'
 let g:indentLine_char_list = ['|', '¦', '┆', '┊']
 let g:indentLine_concealcursor = 'inc'
- 
+
 "---------------------------------------------------------------
 
 " matchit插件
 set nocompatible
-filetype plugin on
 runtime macros/matchit.vim
 packadd! matchit
 
 " 启动netrw 插件
 set nocompatible
-filetype plugin on
 
 " vimwiki
 set nocompatible
-filetype plugin on
 syntax on
 let g:vimwiki_list =[{'path':'~/vimwiki/',
                     \ 'synatx':'markdown',
@@ -350,7 +350,7 @@ let g:NERDTreeShowLineNumbers=1
 
 
 " 一键编译
-map <F2> :call CompileRunGcc()<CR>   
+map <F2> :call CompileRunGcc()<CR>
 func! CompileRunGcc()
   exec "w"
   if &filetype == 'c'
@@ -378,7 +378,7 @@ func! CompileRunGcc()
   endif
 endfunc
 
-map <F6> :call CompileBuildrrr()<CR>  
+map <F6> :call CompileBuildrrr()<CR>
 func! CompileBuildrrr()
   exec "w"
   if &filetype == 'vim'
@@ -388,4 +388,28 @@ func! CompileBuildrrr()
   endif
 endfunc
 
-source $HOME/imap.vim
+
+"csv
+let g:csv_delim=','
+let g:csv_default_delim=','
+let g:csv_table_leftalign=1
+ function MySTL()
+    if has("statusline")
+        hi User1 term=standout ctermfg=0 ctermbg=11 guifg=Black guibg=Yellow
+        let stl = ...
+        if exists("*CSV_WCol")
+            let csv = '%1*%{&ft=~"csv" ? CSV_WCol() : ""}%*'
+        else
+            let csv = ''
+        endif
+        return stl.csv
+    endif
+endfunc
+set stl=%!MySTL()
+let g:csv_bind_B = 1 "绑定B跳转到首列而不是E"
+let g:csv_autocmd_arrange	   = 1
+let g:csv_autocmd_arrange_size = 1024*1024 " aug CSV_Editing "     au!  "     au BufRead,BufWritePost *.csv :%s ArrangeColumn "     au BufWritePre *.csv :%s UnArrangeColumn " aug end
+
+
+" keymap
+set keymap=

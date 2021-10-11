@@ -37,6 +37,8 @@ Plug 'https://github.com/Yggdroot/indentLine.git'
 Plug 'https://github.com/nelstrom/vim-visual-star-search.git'
 Plug 'https://github.com/tpope/vim-abolish.git'
 Plug 'https://github.com/tpope/vim-markdown.git'
+Plug 'https://github.com/movsb/gvim_fullscreen.git'
+Plug 'chrisbra/csv.vim'
 
 " "初始化插件系统
 call plug#end()
