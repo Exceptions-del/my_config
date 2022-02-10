@@ -39,6 +39,7 @@ Plug 'https://github.com/tpope/vim-abolish.git'
 Plug 'https://github.com/tpope/vim-markdown.git'
 Plug 'https://github.com/movsb/gvim_fullscreen.git'
 Plug 'chrisbra/csv.vim'
+Plug 'yianwillis/vimcdoc' "中文文档
 
 " "初始化插件系统
 call plug#end()
