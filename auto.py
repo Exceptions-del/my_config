@@ -31,7 +31,8 @@ def main(path):
     os.system(f"cp ./.Rprofile ~/")
     for i in Path('vim_config/').iterdir():
         os.system(f"cp {Path(i).resolve()} ~/")
-
+        
+    os.system('clear')
     print("复制完毕")
 
 if __name__ == '__main__':
