@@ -1,8 +1,8 @@
 " 为插件指定目录
 filetype off
 
-set rtp+=$Home/.vim/plugged/
-call plug#begin('$HOME/.vim/plugged')
+set rtp+=~/.vim/plugged/
+call plug#begin('~/.vim/plugged')
 
 Plug 'neoclide/coc.nvim', {'branch': 'release'}
 Plug 'https://github.com/tpope/vim-commentary.git'
